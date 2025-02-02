@@ -1,0 +1,13 @@
+services:
+  webapp:
+    image: ubuntu:24.10
+    container_name: "drogon-webapp"
+    working_dir: /usr/local
+    ports:
+      - "5555:5555"
+    volumes:
+      - ./webapp:/usr/local
+    command: > 
+      sh -c "apt update && apt upgrade -y &&
+            apt install git gcc g++ cmake libjsoncpp-dev uuid-dev zlib1g-dev openssl libssl-dev uuid-dev -y &&
+            tail -f /dev/null"
